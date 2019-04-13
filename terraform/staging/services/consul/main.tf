@@ -20,7 +20,7 @@ module "consul-cluster" {
   asgname         = "consul-asg"
   asg_min_size    = "3"
   asg_max_size    = "3"
-  image           = "ami-0d67bfa5edfeaf33e"
+  image           = "${var.ami}"
 }
 
 # Output DNS name of the consul cluster.
