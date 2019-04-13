@@ -1,0 +1,32 @@
+---
+- name: "Install docker"
+  tags:
+    - docker_install
+  yum:
+    name: docker
+    state: present
+  become: yes
+
+- name: "Install python-pip"
+  tags:
+    - docker_install
+  yum:
+    name: python-pip
+    state: present
+  become: yes
+
+- name: "Install docker-py"
+  tags:
+    - docker_install
+  pip:
+    name: docker
+    state: present
+  become: yes
+
+- name: "Install requests"
+  tags:
+    - docker_install
+  pip:
+    name: requests
+    state: latest
+  become: yes
