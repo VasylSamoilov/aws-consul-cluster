@@ -1,0 +1,15 @@
+---
+- name: "Check if docker is installed"
+  yum:
+    list: docker
+  register: yum_list
+
+- name: "Fail if docker is not installed"
+  fail:
+    msg: "Docker is not installed"
+  when: yum_list.results | selectattr("yumstate", "match", "installed") | list | length == 0
+
+- name: "Pull an image"
+  docker_image:
+    name: consul:1.4.4
+  become: yes
