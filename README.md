@@ -79,3 +79,19 @@ Automate the creation of a Consul cluster
 * Configure CloudWatch to monitor consul servers load
 * Implement dynamic scaling for auto-scaling group 
 * Migrate to spot instances to save money
+
+## Price calculator
+#### Elastic Load Balancing 
+* Number: 1
+* Processed bytes per CLB: 10 GB per month
+* Monthly: 21.98 USD
+#### EC2
+* Number: 3 t2.micro Linux instances with a consistent workload, Amazon Elastic Block Storage (30 GB General Purpose SSD (gp2))
+* Monthly: 31.73 USD
+
+## Used references
+* https://www.dwmkerr.com/creating-a-resilient-consul-cluster-for-docker-microservice-discovery-with-terraform-and-aws/
+* https://www.terraform.io/docs/
+* https://www.packer.io/docs/
+* https://docs.ansible.com/ansible/latest/index.html
+* https://calculator.aws/#/estimate
