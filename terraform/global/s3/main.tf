@@ -1,6 +1,6 @@
 # terraform state file setup
 provider "aws" {
-  region = "eu-central-1"
+  region = "${var.region_name}"
 }
 
 # create an S3 bucket to store the state file in

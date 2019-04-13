@@ -9,4 +9,4 @@
 *.tfvars
 
 # backend file
-terraform/staging/services/terraform.tf
+terraform/staging/services/consul/terraform.tf

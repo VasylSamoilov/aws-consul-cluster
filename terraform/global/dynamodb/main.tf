@@ -1,6 +1,6 @@
 # terraform state file setup
 provider "aws" {
-  region = "eu-central-1"
+  region = "${var.region_name}"
 }
 
 # create a dynamodb table for locking the state file
@@ -16,6 +16,6 @@ resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
   }
 
   tags {
-    Name = "DynamoDB Terraform State Lock Table"
+    Name = "DynamoDB Terraform state lock table"
   }
 }
