@@ -12,7 +12,19 @@ Automate the creation of a Consul cluster
 
 4. Consul instances should discover themselves using DNS
 
-## Prerequisites
+## Pre-requisites
+
+* You must have [Terraform](https://www.terraform.io/) installed on your computer. 
+* You must have [Packer](https://www.packer.io/) installed on your computer. 
+* You must have [Docker](https://www.docker.com/) installed on your computer. 
+* You must have an [Amazon Web Services (AWS) account](http://aws.amazon.com/).
+
+### Configure AWS credentials
+Configure [AWS access keys](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) as environment variables:
+```
+export AWS_ACCESS_KEY_ID=(access key id)
+export AWS_SECRET_ACCESS_KEY=(secret access key)
+```
 
 ### Build packer image
 ```
@@ -68,6 +80,11 @@ Automate the creation of a Consul cluster
 # terraform init
 # terraform plan -var region=$AWS_REGION -var ami=$AMI_ID
 # terraform apply -var region=$AWS_REGION -var ami=$AMI_ID
+```
+
+### Cleanup
+```
+terraform destroy -var region=$AWS_REGION -var ami=$AMI_ID
 ```
 
 ### Architecture diagram
