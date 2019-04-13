@@ -1,0 +1,13 @@
+---
+- name: "Assert platform is supported"
+  tags:
+    - docker_install
+  assert:
+    that:
+      - ansible_os_family in ['Archlinux', 'RedHat', 'Suse']
+
+- include: install_docker.yml
+
+- include: configure_docker.yml
+
+- include: enable_docker.yml

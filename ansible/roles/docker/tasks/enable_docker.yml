@@ -1,0 +1,15 @@
+---
+- name: "Enable docker"
+  tags:
+    - docker_enable
+  service:
+    name: docker
+    enabled: yes
+    state: started
+  become: yes
+
+- name: "Wait until docker.sock before continuing"
+  tags:
+    - docker_enable
+  wait_for:
+    path: /var/run/docker.sock
