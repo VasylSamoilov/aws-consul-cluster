@@ -12,11 +12,20 @@ Automate the creation of a Consul cluster
 
 4. Consul instances should discover themselves using DNS
 
+## Prerequisites
+
+### Build packer image
+```
+# cd packer
+# packer build consul.json
+```
+
 ## Usage
 
 ### Configure AWS region
 ```
 # export AWS_REGION="eu-central-1"
+# export AMI_ID="<ami_id_from_packer_output>"
 ```
 
 ### Configure terraform remote state (optional)
@@ -57,9 +66,16 @@ Automate the creation of a Consul cluster
 ```
 # cd terraform/staging/services/consul
 # terraform init
-# terraform plan -var region=$AWS_REGION
-# terraform apply -var region=$AWS_REGION
+# terraform plan -var region=$AWS_REGION -var ami=$AMI_ID
+# terraform apply -var region=$AWS_REGION -var ami=$AMI_ID
 ```
 
 ### Architecture diagram
 ![alt text](https://i.imgur.com/JuKMOND.png "AWS diagram")
+
+
+## Additional improvements to consider
+* Configure CloudWatch to collect logs from consul servers
+* Configure CloudWatch to monitor consul servers load
+* Implement dynamic scaling for auto-scaling group 
+* Migrate to spot instances to save money
