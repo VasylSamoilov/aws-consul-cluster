@@ -1,0 +1,33 @@
+{
+    "builders": [
+        {
+            "ami_name": "dockerized-consul",
+            "instance_type": "t2.micro",
+            "region": "eu-central-1",
+            "type": "amazon-ebs",
+            "source_ami": "ami-09def150731bdbcc2",
+            "ssh_username": "ec2-user"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sudo yum install -y python3-pip",
+                "sudo pip3 install ansible"
+            ]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_file": "../ansible/playbook.yml",
+            "extra_arguments": [
+                "--extra-vars",
+                "ansible_ssh_user=ec2-user"
+            ],
+            "role_paths": [
+                "../ansible/roles/docker",
+                "../ansible/roles/consul"
+            ]
+        }
+    ]
+}
