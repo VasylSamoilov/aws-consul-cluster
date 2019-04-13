@@ -28,5 +28,5 @@
     - docker_install
   pip:
     name: requests
-    state: latest
+    state: present
   become: yes
