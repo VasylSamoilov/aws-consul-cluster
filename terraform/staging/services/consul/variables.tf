@@ -1,20 +1,19 @@
-//  The region we will deploy our cluster into.
-variable "region" {
-  description = "Region to deploy the Consul Cluster into"
-
-  //  The default below will be fine for many, but to make it clear for first
-  //  time users, there's no default, so you will be prompted for a region.
-  //  default = "us-east-1"
+# The AMI to use for consul cluster.
+variable "ami" {
+  description = "AMI to use"
 }
 
-//  The public key to use for SSH access.
+# The region to deploy cluster into.
+variable "region" {
+  description = "Region to deploy the consul cluster into"
+}
+
+# The public key to use for SSH access.
 variable "public_key_path" {
   default = "~/.ssh/id_rsa.pub"
 }
 
-//  This map defines which AZ to put 'Public Subnet A' in, based on the
-//  region defined. You will typically not need to change this unless
-//  you are running in a new region!
+# This map defines which AZ to put 'Public Subnet A' in, based on the region defined.
 variable "subnetaz1" {
   type = "map"
 
@@ -30,9 +29,7 @@ variable "subnetaz1" {
   }
 }
 
-//  This map defines which AZ to put 'Public Subnet B' in, based on the
-//  region defined. You will typically not need to change this unless
-//  you are running in a new region!
+# This map defines which AZ to put 'Public Subnet B' in, based on the region defined.
 variable "subnetaz2" {
   type = "map"
 
@@ -48,9 +45,7 @@ variable "subnetaz2" {
   }
 }
 
-//  This map defines which AZ to put 'Public Subnet C' in, based on the
-//  region defined. You will typically not need to change this unless
-//  you are running in a new region!
+# This map defines which AZ to put 'Public Subnet C' in, based on the region defined.
 variable "subnetaz3" {
   type = "map"
 
