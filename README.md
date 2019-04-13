@@ -60,3 +60,6 @@ Automate the creation of a Consul cluster
 # terraform plan -var region=$AWS_REGION
 # terraform apply -var region=$AWS_REGION
 ```
+
+### Architecture diagram
+![alt text](https://i.imgur.com/JuKMOND.png "AWS diagram")
